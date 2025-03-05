@@ -59,7 +59,7 @@ const app = express();
 
 // ✅ Fix: Improved CORS Configuration
 app.use(cors({
-    origin: 'https://employee-management-system-aplication.netlify.app',
+    origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
