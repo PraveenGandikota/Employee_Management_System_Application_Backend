@@ -44,6 +44,11 @@ app.use(express.static('Public'));
 // });
 
 //const PORT = process.env.PORT || 3000; 
+app.get('/hi', (req, res) => {
+    console.log("hi bro, it is working fine");
+    res.send("hi bro, it is working fine");
+});
+
 
 app.listen(5000, () => {
     // console.log(`Server is running on port ${PORT}`);
