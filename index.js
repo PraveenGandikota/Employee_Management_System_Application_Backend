@@ -84,6 +84,4 @@ app.get("/hi", (req, res) => {
   res.send("hi bro, it is working fine");
 });
 
-// ❌ Remove `app.listen(5000, ...)`
-// ✅ Export the app for Vercel
 export default app;
