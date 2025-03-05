@@ -23,6 +23,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use('/auth', adminRouter);
 app.use(express.static('Public'));
+app.use(express.urlencoded({ extended: true }));
 
 const verifyUser = (req, res, next) => {
     const token = req.cookies.token;
@@ -42,7 +43,7 @@ app.get('/verify', verifyUser, (req, res) => {
     return res.json({ Status: true, role: req.role, id: req.id });
 });
 
-const PORT = process.env.PORT || 5000; 
+const PORT = process.env.PORT || 3000; 
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
