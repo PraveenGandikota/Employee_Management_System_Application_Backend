@@ -79,7 +79,7 @@ app.use(cookieParser());
 app.use("/auth", adminRouter);
 app.use(express.static("Public"));
 
-app.get("api//hi", (req, res) => {
+app.get("api/hi", (req, res) => {
   console.log("hi bro, it is working fine");
   res.send("hi bro, it is working fine");
 });
