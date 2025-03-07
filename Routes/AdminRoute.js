@@ -11,6 +11,7 @@ router.post('/adminlogin', (req, res) => {
     const sql = 'SELECT * FROM users WHERE username = ? AND password = ?';
     
     db.query(sql, [req.body.username, req.body.password], (err, result) => {
+        console.error("Database Query Error:", err);
         if (err) return res.json({ loginStatus: false, Error: 'Query Error' });
 
         if (result.length > 0) {
