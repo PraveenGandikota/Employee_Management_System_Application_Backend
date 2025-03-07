@@ -46,24 +46,48 @@ router.post('/add_category', (req, res) => {
 });
 
 
-// image upload 
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'public/Images')
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.fieldname + "_" + Date.now() + path.extname(file.originalname))
-    }
-})
-const upload = multer({
-    storage: storage
-})
-// end imag eupload 
+// // image upload 
+// const storage = multer.diskStorage({
+//     destination: (req, file, cb) => {
+//         cb(null, 'public/Images')
+//     },
+//     filename: (req, file, cb) => {
+//         cb(null, file.fieldname + "_" + Date.now() + path.extname(file.originalname))
+//     }
+// })
+// const upload = multer({
+//     storage: storage
+// })
+// // end imag eupload 
 
-router.post('/add_employee', upload.single('image'), (req, res) => {
-    // console.log("File Upload Data:", req.file);
-    // console.log("Request Body:", req.body);
+// router.post('/add_employee', upload.single('image'), (req, res) => {
+//     // console.log("File Upload Data:", req.file);
+//     // console.log("Request Body:", req.body);
     
+//     const sql = `INSERT INTO employee 
+//     (name, email, password, address, salary, image, category_id) 
+//     VALUES (?)`;
+
+//     bcrypt.hash(req.body.password, 10, (err, hash) => {
+//         if (err) return res.json({ Status: false, Error: "Hashing-Query Error" });
+
+//         const values = [
+//             req.body.name,
+//             req.body.email,
+//             hash, // Hashed password
+//             req.body.address,
+//             req.body.salary, 
+//             req.file ? req.file.filename : null, // Handle if no file is uploaded
+//             req.body.category_id
+//         ];
+
+//         db.query(sql, [values], (err, result) => {
+//             if (err) return res.json({ Status: false, Error: err });
+//             return res.json({ Status: true, Message: "Employee added successfully" });
+//         });
+//     });
+// });
+router.post('/add_employee', (req, res) => {
     const sql = `INSERT INTO employee 
     (name, email, password, address, salary, image, category_id) 
     VALUES (?)`;
@@ -77,7 +101,7 @@ router.post('/add_employee', upload.single('image'), (req, res) => {
             hash, // Hashed password
             req.body.address,
             req.body.salary, 
-            req.file ? req.file.filename : null, // Handle if no file is uploaded
+            "default-image.png", // Set a default image or NULL
             req.body.category_id
         ];
 
@@ -87,6 +111,7 @@ router.post('/add_employee', upload.single('image'), (req, res) => {
         });
     });
 });
+
 
 router.get('/employee', (req, res) => {
     const sql = "SELECT * FROM employee";
