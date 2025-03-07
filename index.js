@@ -58,28 +58,28 @@ const app = express();
 
 // ✅ Fixing CORS (Correct Netlify URL)
 app.use(cors({
-    origin: "https://employee-management-system-aplication.netlify.app", // ✅ Fixed URL
+    origin: '*', // ✅ Fixed URL
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }));
 
 // ✅ Set CORS Headers Manually
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "https://employee-management-system-aplication.netlify.app");
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-    res.header("Access-Control-Allow-Credentials", "true");
-    next();
-});
+// app.use((req, res, next) => {
+//     res.header("Access-Control-Allow-Origin", "https://employee-management-system-aplication.netlify.app");
+//     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+//     res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+//     res.header("Access-Control-Allow-Credentials", "true");
+//     next();
+// });
 
-// ✅ Handle Preflight Requests
-app.options("*", (req, res) => {
-    res.header("Access-Control-Allow-Origin", "https://employee-management-system-aplication.netlify.app");
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-    res.header("Access-Control-Allow-Credentials", "true");
-    res.sendStatus(200);
-});
+// // ✅ Handle Preflight Requests
+// app.options("*", (req, res) => {
+//     res.header("Access-Control-Allow-Origin", "https://employee-management-system-aplication.netlify.app");
+//     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+//     res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+//     res.header("Access-Control-Allow-Credentials", "true");
+//     res.sendStatus(200);
+// });
 
 app.use(express.json());
 app.use(cookieParser());
