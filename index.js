@@ -65,7 +65,7 @@ app.use(cors({
 
 // ✅ Set CORS Headers Manually
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "https://employee-management-system-aplication.netlify.app");
+    res.header("Access-Control-Allow-Origin", 'https://employee-management-system-aplication.netlify.app');
     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
     res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
     res.header("Access-Control-Allow-Credentials", "true");
@@ -74,7 +74,7 @@ app.use((req, res, next) => {
 
 // ✅ Handle Preflight Requests
 app.options("*", (req, res) => {
-    res.header("Access-Control-Allow-Origin", "https://employee-management-system-aplication.netlify.app");
+    res.header("Access-Control-Allow-Origin", 'https://employee-management-system-aplication.netlify.app');
     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
     res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
     res.header("Access-Control-Allow-Credentials", "true");
